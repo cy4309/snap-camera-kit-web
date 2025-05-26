@@ -75,6 +75,10 @@ function App() {
     return `${m}:${s}`;
   };
 
+  const isLineWebView = () => {
+    return /Line/i.test(navigator.userAgent);
+  };
+
   const toggleFacingMode = () => {
     setFacingMode((prev) => (prev === "user" ? "environment" : "user"));
   };
@@ -259,11 +263,17 @@ function App() {
 
           <div className="absolute bottom-50 my-4 gap-4 w-1/2 flex justify-center items-center">
             {/* 電腦/Android 下載 */}
-            <BaseButton className="w-full !bg-blue-500 text-white">
-              <a href={videoUrl} download="snap-video.mp4">
-                影片下載
-              </a>
-            </BaseButton>
+            {isLineWebView() ? (
+              <div className="text-red-500 font-bold text-center">
+                LINE內建瀏覽器不支援下載，請點「在瀏覽器開啟」再下載影片。
+              </div>
+            ) : (
+              <BaseButton className="w-full !bg-blue-500 text-white">
+                <a href={videoUrl} download="snap-video.mp4">
+                  影片下載
+                </a>
+              </BaseButton>
+            )}
             {/* iOS 下載（DataURL） */}
             {/* {videoDataUrl && (
               <BaseButton className="w-full !bg-blue-500 text-white">
