@@ -171,7 +171,7 @@ function App() {
       <div ref={canvasContainerRef} />
 
       {!photo && !videoUrl && (
-        <div className="w-2/3 absolute bottom-30 flex flex-col justify-center items-center">
+        <div className="w-1/2 absolute bottom-30 flex flex-col justify-center items-center">
           {/* <BaseButton onClick={toggleAudio} className="px-4 py-2 opacity-80 font-bold rounded-xl shadow-md">
             {isAudioEnabled ? "🔊" : "🔇"}
           </BaseButton> */}
